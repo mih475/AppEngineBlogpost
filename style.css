@@ -20,6 +20,14 @@
   background-size: cover;
 }
 
+/* Pagination */
+.allPosts {
+  margin-bottom: 4rem;
+}
+.allPosts > .btn {
+  border-radius: 2rem;
+}
+
 h1,
 h2,
 h3,
