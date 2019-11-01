@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Let's Share</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body id="body">
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4">
+                    <!-- Button trigger modal -->
+                    <form>
+                        <br>
+                        <div class="form-group" style="margin-bottom: 0.5rem;">
+                            <input type="email" class="form-control" id="exampleInputPassword1"
+                                placeholder="Email Address" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">
+                            Subscribe
+                        </button>
+                        <!-- <div class="form-group mmb-2">
+                <label for="inputPassword2" class="sr-only">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputPassword2"
+                  placeholder="me@email.com"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">
+                Subscribe
+              </button> -->
+                    </form>
+                </div>
+                <div class="col-4 text-center">
+                    <a class="blog-header-logo text-dark" href="#">Let's Share!</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                        data-target="#exampleModal" data-whatever="@mdo" href="#">
+                        Log out
+                    </button>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main role="main" class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-8 blog-main">
+                <h3 class="pb-4 mb-4 font-italic border-bottom">
+                    A New Blog On The Way....
+                </h3>
+
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Title of The Blog</label>
+                        <input type="titleOfBlog" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Ex: Nature is beautiful!!!">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Content of The Blog</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                    </div>
+                </form>
+
+                <button type="blogSubmit" class="btn btn-outline-dark" style="margin-left: 475pt; margin-bottom: 10pt;">
+                    Submit
+                </button>
+                <!-- /.blog-post -->
+                <nav class="allPosts">
+                    <a class="btn btn-outline-secondary" href="homepage.html">Cancel</a> </nav>
+            </div>
+            <!-- /.blog-main -->
+        </div>
+        <!-- /.row -->
+    </main>
+    <!-- /.container -->
+
+    <footer class="blog-footer">
+        <p>
+            Let's Share website is built for everyone by Muhammad Hasan and Miguel
+            Lobredo
+        </p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</script>
+
+</html>
