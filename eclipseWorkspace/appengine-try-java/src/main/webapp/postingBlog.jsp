@@ -36,8 +36,7 @@
  
 
   <body>
-
-	<div class="container">
+<div class="container">
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4">
@@ -69,17 +68,7 @@
                     <a class="blog-header-logo text-dark" href="#">Let's Share!</a>
                 </div>
                 
-                
-                
-                
-                <div class="col-4 d-flex justify-content-end align-items-center">
-                    
-                    
-                    
-                    
- 
-
-<%
+     <%
 
     String guestbookName = request.getParameter("guestbookName");
 
@@ -101,14 +90,11 @@
 
 %>
 
-<button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
-                        data-target="#exampleModal" data-whatever="@mdo" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">
-                        Sign/Log in
-                    </button>
+
                     
 <p>Hello, ${fn:escapeXml(user.nickname)}! 
 
-<a href="">sign out</a></p>
+<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></p>
 
 <%
 
@@ -116,9 +102,9 @@
 
 %>
 
-<p>Hello!
+<p>Please
 
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign/Log in</a>
 
 </p>
 
@@ -131,79 +117,10 @@
 
 
 %>
-
- 
-
-<%
-
-	ObjectifyService.register(Greeting.class);
-
-	List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();   
-
-	Collections.sort(greetings); 
-
-    // Run an ancestor query to ensure we see the most up-to-date
-
-    // view of the Greetings belonging to the selected Guestbook.
-
-    if (greetings.isEmpty()) {
-
-        %>
-
-        <p>Guestbook '${fn:escapeXml(guestbookName)}' has no messages.</p>
-
-        <%
-
-    } else {
-
-        %>
-
-        <p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
-
-        <%
-
-        for (Greeting greeting : greetings) {
-
-            pageContext.setAttribute("greeting_content",
-
-                                     greeting.getContent());
-
-            if (greeting.getUser() == null) {
-
-                %>
-
-                <p>An anonymous person wrote:</p>
-
-                <%
-
-            } else {
-
-                pageContext.setAttribute("greeting_user",
-
-                                         greeting.getUser());
-
-                %>
-
-                <p><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:</p>
-
-                <%
-
-            }
-
-            %>
-
-            <blockquote>${fn:escapeXml(greeting_content)}</blockquote>
-
-            <%
-
-        }
-
-    }
-
-%>
-
- 
-
+                
+                
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -247,76 +164,34 @@
         <div class="row">
             <div class="col-md-8 blog-main">
                 <h3 class="pb-4 mb-4 font-italic border-bottom">
-                    All Posted Blogs
+                    A New Blog On The Way....
                 </h3>
 
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Sample blog post</h2>
-                    <p class="blog-post-meta">
-                        January 1, 2014 by <a href="#">Mark</a>
-                    </p>
+                <form>
+                    
+                    <form action="/ofysign" method="post">
+					
+					<label for="exampleFormControlInput1">Title of The Blog</label>
+                
+					<div><textarea name="title" rows="1" cols="60"></textarea></div>
+					<br>
+      				<div><textarea name="content" rows="3" cols="60"></textarea></div>
+					<br>
+					<br>
+      				<div><input type="submit" value="Post Greeting" class="btn btn-outline-dark" style="margin-left: 475pt; margin-bottom: 10pt;" /></div>
 
-                    <p>
-                        This blog post shows a few different types of content that’s
-                        supported and styled with Bootstrap. Basic typography, images, and
-                        code are all supported.
-                    </p>
-                </div>
-                <!-- /.blog-post -->
 
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Another blog post</h2>
-                    <p class="blog-post-meta">
-                        December 23, 2013 by <a href="#">Jacob</a>
-                    </p>
+    				</form>
+                </form>
 
-                    <p>
-                        Cum sociis natoque penatibus et magnis
-                        <a href="#">dis parturient montes</a>, nascetur ridiculus mus.
-                        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
-                        vestibulum. Sed posuere consectetur est at lobortis. Cras mattis
-                        consectetur purus sit amet fermentum.
-                    </p>
-                </div>
-                <!-- /.blog-post -->
-
-                <div class="blog-post">
-                    <h2 class="blog-post-title">New feature</h2>
-                    <p class="blog-post-meta">
-                        December 14, 2013 by <a href="#">Chris</a>
-                    </p>
-
-                    <p></p>
-                </div>
+                <button type="blogSubmit" class="btn btn-outline-dark" style="margin-left: 475pt; margin-bottom: 10pt;" >
+                    Submit
+                </button>
                 <!-- /.blog-post -->
                 <nav class="allPosts">
-                    <a class="btn btn-outline-secondary" href="homepage.html">Go Back</a> </nav>
+                    <a class="btn btn-outline-secondary" href="/ofyguestbook.jsp">Cancel</a> </nav>
             </div>
             <!-- /.blog-main -->
-
-            <aside class="col-md-4 blog-sidebar">
-                <div class="p-4 mb-3 bg-light rounded">
-                    <h4 class="font-italic">About</h4>
-                    <p class="mb-0">
-                        Miguel and Muhammad created this website. Miguel is a Senior in
-                        Electrical and Engineering at the University of Texas at Austin.
-                        His initial interest in computers and technology had originated in
-                        High School during sophomore year. Muhammad is a Senior in
-                        Electrical and Computer Engineering at the University of Texas at
-                        Austin. He is focusing on software development and minoring in
-                        business. He wants to help or consult with people solving their
-                        problems.
-                    </p>
-                </div>
-
-                <div class="p-4">
-                    <h4 class="font-italic">Elsewhere</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="https://medium.com/">Medium</a></li>
-                    </ol>
-                </div>
-            </aside>
-            <!-- /.blog-sidebar -->
         </div>
         <!-- /.row -->
     </main>
@@ -325,7 +200,7 @@
     <footer class="blog-footer">
         <p>
             Let's Share website is built for everyone by Muhammad Hasan and Miguel
-            Lobredo
+            Robledo
         </p>
         <p>
             <a href="#">Back to top</a>
@@ -335,15 +210,7 @@
     
     
 
-    <form action="/sign" method="post">
-
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-
-      <div><input type="submit" value="Post Greeting" /></div>
-
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
-
-    </form>
+    
 
  
 

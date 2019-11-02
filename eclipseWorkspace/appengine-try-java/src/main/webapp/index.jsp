@@ -26,7 +26,7 @@
 <html>
 
   <head>
-  <title>Let's Share</title>
+  <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link href="style.css" rel="stylesheet" />
@@ -36,8 +36,9 @@
  
 
   <body>
+  
 
-	<div class="container">
+ <div class="container">
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4">
@@ -69,17 +70,7 @@
                     <a class="blog-header-logo text-dark" href="#">Let's Share!</a>
                 </div>
                 
-                
-                
-                
-                <div class="col-4 d-flex justify-content-end align-items-center">
-                    
-                    
-                    
-                    
- 
-
-<%
+     <%
 
     String guestbookName = request.getParameter("guestbookName");
 
@@ -101,14 +92,11 @@
 
 %>
 
-<button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
-                        data-target="#exampleModal" data-whatever="@mdo" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">
-                        Sign/Log in
-                    </button>
+
                     
 <p>Hello, ${fn:escapeXml(user.nickname)}! 
 
-<a href="">sign out</a></p>
+<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a></p>
 
 <%
 
@@ -116,9 +104,9 @@
 
 %>
 
-<p>Hello!
+<p>Please
 
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign/Log in</a>
 
 </p>
 
@@ -131,9 +119,127 @@
 
 
 %>
+                
+                
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cancel">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your
+                                                email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Password">
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Log in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cancel">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your
+                                                email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Password">
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Log in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </header>
 
+        <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark"
+            style="background-image:url(share.jpg); background-size: 100%; background-position: bottom; opacity: 1">
+            <div class="col-md-6 px-0">
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            
+            <div class="col-md-4" style="margin-left: 120pt;">
+                <div style="margin-left: 80pt; margin-top: 50pt;">
+                    <a type="submit" class="btn btn-outline-dark" href="/postingBlog.jsp"
+                        style="font-size: larger;">Share
+                        Something!</a>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    
+                    
+                    
  
 
+
+
+
+                    
+
+
+
+
+
+ <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+                <h3 class="pb-4 mb-4 font-italic border-bottom">
+                    Recent Posts
+                </h3>
+                
 <%
 
 	ObjectifyService.register(Greeting.class);
@@ -150,7 +256,7 @@
 
         %>
 
-        <p>Guestbook '${fn:escapeXml(guestbookName)}' has no messages.</p>
+        <p>Website '${fn:escapeXml(guestbookName)}' has no messages.</p>
 
         <%
 
@@ -158,7 +264,7 @@
 
         %>
 
-        <p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
+        <p>Messages on Website '${fn:escapeXml(guestbookName)}'.</p>
 
         <%
 
@@ -201,55 +307,6 @@
     }
 
 %>
-
- 
-
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cancel">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp" placeholder="Enter email">
-                                            <small id="emailHelp" class="form-text text-muted">We'll never share your
-                                                email with anyone else.</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Password">
-                                        </div>
-                                        <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Log in</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
-
-    <main role="main" class="container">
-        <br>
-        <div class="row">
-            <div class="col-md-8 blog-main">
-                <h3 class="pb-4 mb-4 font-italic border-bottom">
-                    All Posted Blogs
-                </h3>
-
                 <div class="blog-post">
                     <h2 class="blog-post-title">Sample blog post</h2>
                     <p class="blog-post-meta">
@@ -290,8 +347,15 @@
                 </div>
                 <!-- /.blog-post -->
                 <nav class="allPosts">
-                    <a class="btn btn-outline-secondary" href="homepage.html">Go Back</a> </nav>
+                    <a class="btn btn-outline-secondary" href="/ofyguestbook.jsp">See All Posts</a>
+                </nav>
             </div>
+
+
+
+ 
+
+                    
             <!-- /.blog-main -->
 
             <aside class="col-md-4 blog-sidebar">
@@ -325,7 +389,7 @@
     <footer class="blog-footer">
         <p>
             Let's Share website is built for everyone by Muhammad Hasan and Miguel
-            Lobredo
+            Robledo
         </p>
         <p>
             <a href="#">Back to top</a>
@@ -335,15 +399,7 @@
     
     
 
-    <form action="/sign" method="post">
-
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-
-      <div><input type="submit" value="Post Greeting" /></div>
-
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
-
-    </form>
+    
 
  
 
